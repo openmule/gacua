@@ -27,6 +27,14 @@ const root = join(__dirname, '..');
 
 // remove npm install/build artifacts
 rmSync(join(root, 'node_modules'), { recursive: true, force: true });
+globSync(join(root, 'packages/*/{,node_modules/,*/node_modules}')).forEach(
+  (match) => {
+    if (match.endsWith('node_modules')) {
+      rmSync(match, { recursive: true, force: true });
+    }
+  },
+);
+
 rmSync(join(root, 'bundle'), { recursive: true, force: true });
 rmSync(join(root, 'packages/cli/src/generated/'), {
   recursive: true,
@@ -43,6 +51,7 @@ for (const workspace of rootPackageJson.workspaces) {
   for (const pkgPath of packages) {
     const pkgDir = dirname(join(root, pkgPath));
     rmSync(join(pkgDir, 'dist'), RMRF_OPTIONS);
+    rmSync(join(pkgDir, 'tsconfig.tsbuildinfo'), RMRF_OPTIONS);
   }
 }
 

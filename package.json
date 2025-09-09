@@ -6,7 +6,8 @@
   },
   "type": "module",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/gacua/*"
   ],
   "private": "true",
   "repository": {
@@ -17,6 +18,12 @@
     "sandboxImageUri": "us-docker.pkg.dev/gemini-code-dev/gemini-cli/sandbox:0.1.22"
   },
   "scripts": {
+    "dev:gacua": "concurrently --kill-others \"npm run dev:gacua-frontend\" \"npm run dev:gacua-backend\"",
+    "dev:gacua-frontend": "npm run dev --workspace=packages/gacua/frontend",
+    "dev:gacua-backend": "npm run dev --workspace=packages/gacua/backend",
+    "dev:gacua-mcp-computer": "npm run dev --workspace=packages/gacua/mcp-computer",
+    "start:gacua": "npm run start --workspace=packages/gacua/backend",
+    "start:gacua-mcp-computer": "npm run start --workspace=packages/gacua/mcp-computer",
     "start": "node scripts/start.js",
     "debug": "cross-env DEBUG=1 node --inspect-brk scripts/start.js",
     "auth:npm": "npx google-artifactregistry-auth",

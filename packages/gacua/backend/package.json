@@ -1,0 +1,44 @@
+{
+  "name": "@gacua/backend",
+  "version": "0.0.1-alpha.10",
+  "description": "GACUA Backend",
+  "type": "module",
+  "bin": {
+    "gacua": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc --build",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "gemini",
+    "computer-use",
+    "ai-agent"
+  ],
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@gacua/gemini-cli-core": "file:../../core",
+    "@gacua/mcp-computer": "file:../mcp-computer",
+    "@gacua/shared": "file:../shared",
+    "@google/genai": "1.13.0",
+    "dotenv": "^17.2.0",
+    "express": "^4.18.2",
+    "pino": "^9.9.0",
+    "pino-http": "^10.3.0",
+    "pino-pretty": "^13.0.0",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/http-proxy-middleware": "^0.19.3",
+    "@types/lodash": "^4.17.20",
+    "@types/pino": "^7.0.4",
+    "@types/qrcode-terminal": "^0.12.2",
+    "http-proxy-middleware": "^3.0.5",
+    "tsx": "^4.20.3"
+  }
+}

@@ -34,6 +34,12 @@ if (!existsSync(join(root, 'node_modules'))) {
 execSync('npm run generate', { stdio: 'inherit', cwd: root });
 execSync('npm run build --workspaces', { stdio: 'inherit', cwd: root });
 
+// copy gacua frontend assets to backend/public
+execSync('node scripts/gacua/copy_frontend_assets.js', {
+  stdio: 'inherit',
+  cwd: root,
+});
+
 // also build container image if sandboxing is enabled
 // skip (-s) npm install + build since we did that above
 try {

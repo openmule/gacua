@@ -1,0 +1,41 @@
+{
+  "name": "@gacua/mcp-computer",
+  "version": "0.0.1-alpha.10",
+  "description": "MCP tool computer for GACUA.",
+  "bin": {
+    "gacua-mcp-computer": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "mcp",
+    "nut-js",
+    "ai-agent"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.2",
+    "@nut-tree-fork/nut-js": "^4.2.6",
+    "express": "^4.19.2",
+    "screenshot-desktop": "^1.15.1",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.12",
+    "@types/screenshot-desktop": "^1.15.0",
+    "@types/sharp": "^0.31.1",
+    "esbuild": "^0.25.0",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "optionalDependencies": {
+    "node-mac-permissions": "^2.5.0"
+  }
+}

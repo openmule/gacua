@@ -160,6 +160,7 @@ export default tseslint.config(
   },
   {
     files: ['./**/*.{tsx,ts,js}'],
+    ignores: ['packages/gacua/**/*.{tsx,ts,js}', './scripts/gacua/**/*.js'],
     plugins: {
       'license-header': licenseHeader,
     },
@@ -174,6 +175,33 @@ export default tseslint.config(
           ' */',
         ],
       ],
+    },
+  },
+  {
+    files: ['packages/gacua/**/*.{tsx,ts,js}', './scripts/gacua/**/*.js'],
+    plugins: {
+      'license-header': licenseHeader,
+    },
+    rules: {
+      'license-header/header': [
+        'error',
+        [
+          '/**',
+          ' * @license',
+          ' * Copyright 2025 MuleRun',
+          ' * SPDX-License-Identifier: Apache-2.0',
+          ' */',
+        ],
+      ],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
+      'react/prop-types': 'off', // Using TypeScript for prop validation
     },
   },
   // extra settings for scripts that we run directly with node

@@ -57,7 +57,7 @@
 
 ## Why GACUA?
 
-GACUA extends the core capabilities of [Gemini CL](https://github.com/google-gemini/gemini-cli)I to provide a robust agentic experience. It enables you to:
+GACUA extends the core capabilities of [Gemini CLI](https://github.com/google-gemini/gemini-cli) to provide a robust agentic experience. It enables you to:
 
 - 💻 **Enjoy Out-of-the-Box Computer Use**: Get started with a single command. GACUA provides a free and immediate way to experience computer use, from assisting with gameplay, installing software, and more.
 - 🎯 **Execute Tasks with High Accuracy**: GACUA enhances Gemini 2.5 Pro's grounding capability through a "Image Slicing + Two-Step Grounding" method.

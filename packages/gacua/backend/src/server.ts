@@ -13,9 +13,9 @@ import { randomUUID } from 'crypto';
 import { pinoHttp } from 'pino-http';
 import type { CreateSessionRequest } from '@gacua/shared';
 import qrcode from 'qrcode-terminal';
+import sanitize from 'sanitize-filename';
 
 import { logger } from './logger.js';
-
 import { setupWebSocketServer } from './ws/index.js';
 import { sessionManager } from './services/session/index.js';
 import { sessionRepository } from './repository/index.js';
@@ -132,6 +132,12 @@ app.get('/api/sessions/:id/messages', validateToken, async (req, res) => {
 app.get('/images/:sessionId/:fileName', validateToken, async (req, res) => {
   try {
     const { sessionId, fileName } = req.params;
+    if (sanitize(fileName) !== fileName) {
+      req.log.warn({ sessionId, fileName }, 'Invalid characters in filename');
+      res.status(400).json({ error: 'Invalid filename' });
+      return;
+    }
+
     const imageBuffer = await sessionRepository.getImage(sessionId, fileName);
     res.set({
       'Content-Type': 'image/*',

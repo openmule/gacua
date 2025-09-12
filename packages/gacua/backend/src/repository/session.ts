@@ -39,7 +39,15 @@ export class SessionRepository {
   }
 
   private getImagesFilePath(sessionId: string, fileName: string): string {
-    return path.join(this.baseDir, sessionId, 'images', fileName);
+    const imageDir = path.resolve(this.baseDir, sessionId, 'images');
+    const requestedPath = path.join(imageDir, fileName);
+
+    // Verify the resolved path is within the intended directory
+    if (!requestedPath.startsWith(imageDir + path.sep)) {
+      throw new Error('File path is outside of the allowed directory');
+    }
+
+    return requestedPath;
   }
 
   async createSession(metadata: SessionMetadata): Promise<void> {
